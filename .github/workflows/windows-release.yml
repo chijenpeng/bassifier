@@ -109,7 +109,7 @@ jobs:
           $zipPath = Join-Path $env:RUNNER_TEMP $zipName
           Compress-Archive -Path (Join-Path $packageRoot "*") -DestinationPath $zipPath -CompressionLevel Optimal
           $hash = (Get-FileHash -Algorithm SHA256 -LiteralPath $zipPath).Hash.ToLower()
-          "$hash  $zipName" | Set-Content -LiteralPath "$zipPath.sha256" -Encoding ascii
+          [System.IO.File]::WriteAllText("$zipPath.sha256", "$hash  $zipName`n")
           "PACKAGE_PATH=$zipPath" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Upload package to the existing draft release
