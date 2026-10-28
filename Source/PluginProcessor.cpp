@@ -30,20 +30,20 @@ juce::AudioProcessorValueTreeState::ParameterLayout BassifierProcessor::createLa
 
     juce::AudioProcessorValueTreeState::ParameterLayout layout;
 
-    // Freq is logarithmic across its three octaves, so 100 Hz sits a little past the middle.
+    // Freq is logarithmic across its three octaves, so 70 Hz sits a little below the middle.
     Range freqRange (32.0f, 256.0f,
                      [] (float start, float end, float n) { return start * std::pow (end / start, n); },
                      [] (float start, float end, float v) { return std::log (v / start) / std::log (end / start); },
                      [] (float start, float end, float v) { return juce::jlimit (start, end, std::round (v * 10.0f) * 0.1f); });
 
-    layout.add (std::make_unique<Float> (juce::ParameterID { ParamID::freq, 1 }, "Freq", freqRange, 100.0f,
+    layout.add (std::make_unique<Float> (juce::ParameterID { ParamID::freq, 1 }, "Freq", freqRange, 70.0f,
                                          Attributes().withLabel ("Hz").withStringFromValueFunction ([] (float v, int)
                                          {
                                              return (v < 99.95f ? juce::String (v, 1) : juce::String (juce::roundToInt (v))) + " Hz";
                                          })));
 
     layout.add (std::make_unique<Float> (juce::ParameterID { ParamID::intensity, 1 }, "Intensity",
-                                         Range (-24.0f, 24.0f, 0.1f), 0.0f,
+                                         Range (-24.0f, 24.0f, 0.1f), -24.0f,
                                          Attributes().withLabel ("dB").withStringFromValueFunction ([] (float v, int) { return dbText (v, true); })));
 
     layout.add (std::make_unique<juce::AudioParameterBool> (juce::ParameterID { ParamID::originalBass, 1 }, "Original Bass", true,

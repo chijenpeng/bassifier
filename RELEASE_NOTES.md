@@ -1,5 +1,16 @@
 # Bassifier release notes
 
+## v0.1.1
+
+Patch release: new defaults so a new instance starts near-transparent.
+
+- New defaults: Freq 70 Hz (was 100 Hz) and Intensity -24 dB (was 0 dB). Sessions saved with v0.1.0 keep their stored values.
+- No DSP change; parameter IDs, ranges and identity are unchanged.
+- macOS Universal: AU and VST3, arm64 + x86_64; ad-hoc signed, not notarized.
+- Windows x64: VST3, unsigned; requires the Microsoft Visual C++ x64 Redistributable.
+- macOS checks: CTest 3/3 passed (DSP evaluation, plug-in smoke, snapshot render); editor snapshot shows FREQ 70.0 Hz and INTENSITY -24.0 dB; arm64 + x86_64 slices confirmed in the AU and VST3 builds.
+- Windows: CTest result pending.
+
 ## v0.1.0
 
 Bassifier is a psychoacoustic bass enhancer. It rebuilds the bass below a chosen frequency as harmonics so the low end is heard on small speakers.

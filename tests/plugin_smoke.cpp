@@ -118,8 +118,8 @@ int main()
     std::printf ("Bassifier JUCE host/state smoke test\n");
     check (processor.getLatencySamples() == 0, "reports zero latency");
     check (processor.getParameters().size() == 4, "publishes exactly four parameters");
-    checkParameter (processor, ParamID::freq, 32.0f, 256.0f, 100.0f);
-    checkParameter (processor, ParamID::intensity, -24.0f, 24.0f, 0.0f);
+    checkParameter (processor, ParamID::freq, 32.0f, 256.0f, 70.0f);
+    checkParameter (processor, ParamID::intensity, -24.0f, 24.0f, -24.0f);
     checkParameter (processor, ParamID::originalBass, 0.0f, 1.0f, 1.0f);
     checkParameter (processor, ParamID::gain, -60.0f, 0.0f, 0.0f);
 

@@ -118,7 +118,7 @@ private:
     double sampleRate = 48000.0;
 
     juce::RangedAudioParameter& freq;
-    float freqHz = 100.0f;
+    float freqHz = 70.0f;
     bool dragging = false;
     juce::ParameterAttachment attachment;
 };
