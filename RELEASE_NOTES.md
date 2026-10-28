@@ -9,7 +9,7 @@ Patch release: new defaults so a new instance starts near-transparent.
 - macOS Universal: AU and VST3, arm64 + x86_64; ad-hoc signed, not notarized.
 - Windows x64: VST3, unsigned; requires the Microsoft Visual C++ x64 Redistributable.
 - macOS checks: CTest 3/3 passed (DSP evaluation, plug-in smoke, snapshot render); editor snapshot shows FREQ 70.0 Hz and INTENSITY -24.0 dB; arm64 + x86_64 slices confirmed in the AU and VST3 builds.
-- Windows: CTest result pending.
+- Windows checks: CTest 3/3 passed on the windows-2022 runner; package checksum, archive integrity, PE32+ x86-64 binary and `GetPluginFactory` export verified.
 
 ## v0.1.0
 
